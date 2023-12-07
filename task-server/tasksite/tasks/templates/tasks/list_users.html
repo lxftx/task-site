@@ -1,0 +1,35 @@
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Пользователи
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <table>
+          <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Логин</th>
+                <th scope="col">Возраст</th>
+                <th scope="col">Email</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+              <tr>
+                <td><a href="{{ user.get_absolute_url }}">{{ user.id }}</a></td>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.age }}</td>
+                <td>{{ user.email }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

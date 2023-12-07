@@ -1,0 +1,32 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Удаление задачи - {{task.name}}</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/style-register-create.css' %}">
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <div class="task-delete">
+    <div class="card">
+      <div class="card-header">
+        Удаление {{title.name}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <div class="alert alert-danger" role="alert">
+        Ты точно хочешь удалить эту задачу "{{ task.name }}"?
+      </div>
+        </h5>
+        <p class="card-text">{{task.description|linebreaks}}</p>
+        <button type="submit" class="btn btn-warning">Подтвердить</button>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

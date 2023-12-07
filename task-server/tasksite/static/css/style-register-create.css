@@ -1,0 +1,57 @@
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #b9b9b9;
+  background-color: #e3e3e3;
+}
+
+.form-title-text {
+    color: #f0a500;
+    font-size: 35px;
+    text-align: center;
+}
+
+.task-delete {
+    width: 750px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.card-text, p {
+    color: black;
+}
+
+label {
+    color: #f0a500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1em;
+    line-height: 1.4;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+.form-block {
+    width: 100%;
+    padding: 1em;
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+.form-group {
+    margin: 0 auto;
+}
+
+.btn {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+li {
+    color: red;
+}

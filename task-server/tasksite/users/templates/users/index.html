@@ -1,0 +1,41 @@
+{% extends 'tasks/base.html' %}
+{% load users_tags %}
+{% load static %}
+
+{% block title %}
+    <title>{{ title }} - {{ user.username }}</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/style-index.css' %}">
+{% endblock %}
+
+{% block content %}
+{% show_users %}
+<table>
+    <thead>
+      <tr>
+        <th scope="col">Задача</th>
+        <th scope="col">Описание</th>
+        <th scope="col">Дата создания  <a href="{% url 'users:user_task' user_slug=user.slug sorted='create_task' %}">&#11014;</a> <a href="{% url 'users:user_task' user_slug=user.slug sorted='-create_task' %}">&#11015;</a> </th>
+        <th scope="col">Дата обновления</th>
+        <th scope="col">Статус задачи</th>
+        <th scope="col">Пользователь <a href="{% url 'users:user_task' user_slug=user.slug sorted='username' %}">&#11014;</a> <a href="{% url 'users:user_task' user_slug=user.slug sorted='-username' %}">&#11015;</a> </th>
+        <th scope="col">Действие</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+        <tr>
+          <td>{{ task.name }}</td>
+          <td>{{ task.description|slice:':35' }}</td>
+          <td>{{ task.create_task }}</td>
+          <td>{{ task.update_task }}</td>
+          <td>{{ task.get_status_name_display }}</td>
+          <td>{{ task.username }}</td>
+          <td><a href="{{ task.get_absolute_url }}">Перейти</a> / <a href="{% url 'users:update_task' user_slug=user.slug task_slug=task.slug %}">Изменить</a> / <a href="{% url 'users:delete_task' user_slug=user.slug task_slug=task.slug %}">Удалить</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

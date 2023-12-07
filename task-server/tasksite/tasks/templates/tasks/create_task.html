@@ -1,0 +1,49 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+
+
+{% block title %}
+<title>{{ title }}</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/style-register-create.css' %}">
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'tasks:create_task' %}" method="POST">
+  {% csrf_token %}
+  <div class="container">
+      <div class="row">
+          <div class="form-block">
+              <div class="form-group col-md-6">
+                  <div class="form-title-text">
+                      {{title}}
+                  </div>
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="{{form.name.id_for_label}}">{{ form.name.label }}</label>
+<!--                  <input type="text" class="form-control" id="inputName" placeholder="Введите имя">-->
+                  {{ form.name }}
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="{{form.description.id_for_label}}">{{ form.description.label }}</label>
+<!--                  <input type="number" class="form-control" id="inputAge" placeholder="Введите возраст">-->
+                   {{ form.description }}
+              </div>
+            <div class="form-group col-md-6">
+                <label for="{{form.status_name.id_for_label}}">{{ form.status_name.label }}</label>
+<!--                <input type="text" class="form-control" id="inputLogin" placeholder="Введите Login">-->
+                 {{ form.status_name }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="{{form.username.id_for_label}}">{{ form.username.label }}</label>
+<!--                <input type="email" class="form-control" id="inputEmail" placeholder="example@example.com">-->
+                 {{ form.username }}
+            </div>
+            <button type="submit" class="btn btn-warning">Добавить задачу</button>
+          </div>
+      </div>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'tasks/base.html' %}
+{% load static %}
+
+{% block title %}
+<title> Задача - {{ task.name }}</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static '/css/style-index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Задача - {{task.name}}</h5>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+          <dt class="col-sm-3">Название задачи</dt>
+          <dd class="col-sm-9">{{ task.name }}</dd>
+          <dt class="col-sm-3">Описание задачи</dt>
+          <dd class="col-sm-9">{{ task.description|linebreaksbr }}</dd>
+          <dt class="col-sm-3">Статус задачи</dt>
+          <dd class="col-sm-9">{{ task.get_status_name_display }}</dd>
+          <dt class="col-sm-3">Дата создания</dt>
+          <dd class="col-sm-9">{{ task.create_task }}</dd>
+          <dt class="col-sm-3">Дата обновления задачи</dt>
+          <dd class="col-sm-9">{{ task.update_task }}</dd>
+          <dt class="col-sm-3">Ответственный</dt>
+          <dd class="col-sm-9">{{ task.username }}</dd>
+        </dl>
+        <div class="button-link">
+              <a href="{% url 'tasks:update_task' task.slug %}" class="btn btn-primary">Редактировать задачу</a>
+              <a href="{% url 'tasks:delete_task' task.slug %}" class="btn btn-danger">Удалить задачу</a>
+          </div>
+    </div>
+</div>
+{% endblock %}
